@@ -6,7 +6,7 @@ const actionImgeriesUpload = (acceptedFiles) =>
     const uploadImg = (oneImagery) => {
 
       const myFormData = new FormData();
-      myFormData.append("photo", oneImagery);
+      myFormData.append("dropZone", oneImagery);
 
       return fetch(BACKEND_URL_UPLOAD, {
         method: "POST",

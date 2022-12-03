@@ -47,7 +47,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
       const Ad = {
         ...(id ? {id: id} : {}),
         // ...(images.length ? {images: images[0].url} : {}), /// для аватара
-        ...(images.length ? {images: images} : {}), ///  для объяв
+        // ...(images.length ? {images: images} : {}), ///  для объяв
         title: thisTitle,
         description: thisDescription,
         tags: thisTags,
@@ -105,7 +105,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
             </label>
           </div>
   
-          <Dropzone onDrop={(acceptedFiles) => { onUpload(acceptedFiles) }}>
+          <Dropzone name='dropZone' onDrop={(acceptedFiles) => { onUpload(acceptedFiles) }}>
             {({ getRootProps, getInputProps }) => (
               <section className="container" style={{ border: "dashed 1px", width: 75 + "%" }}>
                 <div style={{ textAlign: "center" }} {...getRootProps()}>

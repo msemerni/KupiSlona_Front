@@ -6,6 +6,10 @@ import history from "../utils/history";
 
 const actionChangeProfile = (myProfile) =>
   async (dispatch) => {
+
+
+    /////// ДОБАВИТЬ АВАТАРКУ
+    
     const gqlQuery = `mutation ChangeProfile($myProfile: UserInput) {
       userUpdate(myProfile: $myProfile) {
         id, createdAt, login, nick, phones, address

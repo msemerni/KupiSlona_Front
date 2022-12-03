@@ -4,11 +4,12 @@ import {connect} from 'react-redux';
 import actionSearchAds from '../actions/actionSearchAds';
 
 const SearchAds = ({ ads = [], status}) => {
-    return (status === 'PENDING' || !status ? <Loader /> :
-      <div className="row">
-        {
-          ads.map(ad => <AdsCategory ad={ad} key={ad.id}/>)
-        }
+    return (
+      status === 'PENDING' || !status ?
+      <Loader /> :
+      <div className="row" style={{justifyContent: "center"}}>
+        { ads.length > 0? 
+          ads.map(ad => <AdsCategory ad={ad} key={ad.id}/>) : "Nothing found" }
       </div>
     )
   }

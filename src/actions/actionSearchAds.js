@@ -1,20 +1,13 @@
 import gql from "../utils/gql";
 import { actionPromise } from "./actionPromise";
 
-const actionSearchAds = (searchString) => {
-  const gqlQuery = gql(`query SearchAds ($query: String) {
-      AdFind (query: $query) {
-        id title price description createdAt tags comments {id text} address user {id login} images {id url}
-      }
-    }`,
-    {
-      query: JSON.stringify(
-        [
-          { $or: [{ title: `/${searchString}/` }, { description: `/${searchString}/` }] },
-          { sort: [{ id: -1 }] }
-        ]
-      )
+const actionSearchAds = (queryString) => {
+  const gqlQuery = gql(`query SearchAds ($queryString: String) {
+    AdSearch (queryString: $queryString) {
+      id title price description createdAt tags address user {id login}
     }
+  }`,
+  { queryString }
   )
   return actionPromise("searchAds", gqlQuery);
 }

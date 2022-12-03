@@ -8,9 +8,9 @@ import actionAvatarUpload from '../actions/actionAvatarUpload';
 import Dropzone from 'react-dropzone';
 
 
-const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address },
+const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } = {},
   status, newImg, onChangeProfile, onUpload }) => {
-
+    console.log("newImg: ", newImg);
   useEffect(() => {
     if (newImg) {
       setImg(newImg)
@@ -22,9 +22,11 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address },
   const [myPhones, setMyPhones] = useState(phones || []);
   const [myAddresses, setMyAddresses] = useState(address || []);
   const [img, setImg] = useState();
+  console.log("img: ", img);
 
   const changeProfile = () => {
     // const newAva = { id: img[0].id }
+    // console.log("newAva: ", newAva);
 
     const newProfile = {
       id: id,
@@ -44,7 +46,7 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address },
 
       <CPreviewAvatar className="col-md-3 p-1 mx-auto" />
 
-      <Dropzone onDrop={(acceptedFiles) => { onUpload(acceptedFiles) }}>
+      <Dropzone name='dropZone' onDrop={(acceptedFiles) => { onUpload(acceptedFiles) }}>
         {({ getRootProps, getInputProps }) => (
           <section className="container mx-auto mb-2 col-sm-8" style={{ border: "dashed 1px", width: 65 + "%" }}>
             <div className="text-center p-2" {...getRootProps()}>

@@ -11,7 +11,7 @@ const PreviewAvatar = ({ img = [store.getState().info?.userProfile?.payload?.ava
     <div className={`${className}`}>
       {img && img[0] && img[0].url ?
         <img src={`${BACKEND_URL}${img[0].url}`} className="img-fluid rounded-circle" /> :
-        <img src={NO_IMAGE_AVA} className="img-fluid rounded-circle" alt={"avatar.originalFileName"} />
+        <img src={NO_IMAGE_AVA} className="img-fluid rounded-circle" alt={"avatar.originalname"} />
       }
     </div>
   )

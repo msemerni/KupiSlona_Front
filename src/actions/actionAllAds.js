@@ -9,36 +9,48 @@ const actionAllAds = () =>
     uploadedAds ? skipAdsCount = uploadedAds.length : skipAdsCount = 0;
 
 
-  //   const gqlQuery = await gql(`query SearchAds ($query: String) {
-  //   AdFind (query: $query) {
-  //     id title price description createdAt tags comments {id text} address user {id login phones address} images {id url}
-  //   }
-  // }`
-    const gqlQuery = await gql(`query allAds {
-    getAds {
-      id title price description createdAt tags address
-      user {id login nick} 
-      images{
-      	id 
-    	}
-    }
-}`
-  ,
-      {
-        query: JSON.stringify(
-          [
-            {},
-            {
-              // sort: [{ id: -1 }],
-              // limit: [5],
-              // skip: [skipAdsCount],
-              order:[["id","DESC"]],
-              offset:(skipAdsCount),
-              limit : 5,
-            }
-          ]
-        )
+    // query allAds ($settings: String) {
+    //   getAds (query: $settings) {
+    //     id title price description createdAt tags address
+    //     user {id login nick} 
+    //     images{ id }
+    //   }
+    // }
+
+    const gqlQuery = await gql(`
+    query allAds ($settings: String) {
+      getAds (settings: $settings) {
+        id title price description createdAt tags address
+        user {id login nick} 
+        images{ id }
       }
+    }
+    `
+  ,
+  {
+    settings: JSON.stringify(
+      // [
+      //   {}, 
+        { order:[["id","DESC"]], offset:(skipAdsCount), limit : 5 }
+      // ]
+    )
+  }
+      // {
+      //   query: JSON.stringify(
+      //     [
+      //       {},
+      //       {
+      //         // sort: [{ id: -1 }],
+      //         // limit: [5],
+      //         // skip: [skipAdsCount],
+
+      //         order:[["id","DESC"]],
+      //         offset:(skipAdsCount),
+      //         limit : 5,
+      //       }
+      //     ]
+      //   )
+      // }
     )
 
     const updateAD = await gqlQuery;

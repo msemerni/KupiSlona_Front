@@ -4,9 +4,12 @@ import { actionPromise } from './actionPromise';
 const actionUser = (id) => {
   const gqlQuery = `query thisUser ($ID: ID) {
     getUser (id: $ID) {
-      id login nick createdAt phones address
+      id login nick createdAt phones address avatar{
+        id path originalname
+      }
     }
   }`;
+
   const gqlPromise = gql(gqlQuery, { ID: id });
   return actionPromise("userProfile", gqlPromise);
 }
