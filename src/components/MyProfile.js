@@ -7,7 +7,6 @@ import actionChangeProfile from '../actions/actionChangeProfile';
 import actionAvatarUpload from '../actions/actionAvatarUpload';
 import Dropzone from 'react-dropzone';
 
-
 const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } = {},
   status, newImg, onChangeProfile, onUpload }) => {
     console.log("newImg: ", newImg);
@@ -24,12 +23,7 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
   const [img, setImg] = useState();
 
   const changeProfile = () => {
-    console.log("IMG[0].ID: ", img[0].id); //168
-    console.log("IMG: ", img); // [{id url}]
-
     const newAva = img[0].id;
-
-    console.log("NEW_AVA: ", newAva); //
 
     const newProfile = {
       id: id,
@@ -38,10 +32,7 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
       phones: myPhones,
       address: myAddresses,
       avatar: newAva
-      // ...(newAva ? { avatar: newAva } : {}),
     }
-
-    console.log("==newProfile==: ", newProfile);
 
     onChangeProfile(newProfile);
   }

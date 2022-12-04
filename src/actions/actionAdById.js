@@ -5,7 +5,9 @@ const actionAdById = (id) => {
   const queryPromise = gql(
     `query FindAdByID ($id: ID) {
       AdFindOne (id: $id) {
-        id title price description createdAt tags address user {id login phones}
+        id title price description createdAt tags address 
+        images {id url originalname}
+        user {id login phones}
       }
     }`,
     { id });

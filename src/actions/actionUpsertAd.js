@@ -1,12 +1,14 @@
 import gql from "../utils/gql";
 import { actionPromise } from "./actionPromise";
 
-const actionAddAd = (Ad) =>
+const actionUpsertAd = (Ad) =>
   async (dispatch) => {
     const gqlQuery = `mutation upsertAd($Ad: AdInput) {
       upsertAd(ad:$Ad) 
       {
-        user {id login} id title tags price images {id url}
+        id title tags price 
+        images { id url originalname }
+        user { id login }
       }
     }`;
     const gqlPromise = gql(gqlQuery, { Ad });
@@ -15,4 +17,4 @@ const actionAddAd = (Ad) =>
     return resolved;
   }
 
-export default actionAddAd;
+export default actionUpsertAd;

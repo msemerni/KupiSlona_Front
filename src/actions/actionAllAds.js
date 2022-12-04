@@ -8,21 +8,12 @@ const actionAllAds = () =>
     const uploadedAds = getState().info?.allAds?.payload || [];
     uploadedAds ? skipAdsCount = uploadedAds.length : skipAdsCount = 0;
 
-
-    // query allAds ($settings: String) {
-    //   getAds (query: $settings) {
-    //     id title price description createdAt tags address
-    //     user {id login nick} 
-    //     images{ id }
-    //   }
-    // }
-
     const gqlQuery = await gql(`
     query allAds ($settings: String) {
       getAds (settings: $settings) {
         id title price description createdAt tags address
-        user {id login nick} 
-        images{ id }
+        images {id url originalname}
+        user {id login phones}
       }
     }
     `
@@ -34,24 +25,7 @@ const actionAllAds = () =>
         { order:[["id","DESC"]], offset:(skipAdsCount), limit : 5 }
       // ]
     )
-  }
-      // {
-      //   query: JSON.stringify(
-      //     [
-      //       {},
-      //       {
-      //         // sort: [{ id: -1 }],
-      //         // limit: [5],
-      //         // skip: [skipAdsCount],
-
-      //         order:[["id","DESC"]],
-      //         offset:(skipAdsCount),
-      //         limit : 5,
-      //       }
-      //     ]
-      //   )
-      // }
-    )
+  })
 
     const updateAD = await gqlQuery;
     dispatch(actionFulfilled("allAds", [...uploadedAds, ...updateAD]));

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import {BACKEND_URL, tagList} from '../constants/constants.js';
 import actionImgeriesUpload from '../actions/actionImgeriesUpload';
-import actionAddAd from '../actions/actionAddAd.js';
+import actionUpsertAd from '../actions/actionUpsertAd.js';
 import history from '../utils/history.js';
 
 const BtnMyAds = () => {
@@ -31,29 +31,40 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
     const [thisPrice, setPrice] = useState(price || "");
     const [thisAddress, setAddress] = useState(address || "");
     const [thisTags, setTags] = useState(tags || []);
+    // const [thisImg, setImg] = useState([]);
     const [thisImg, setImg] = useState([]);
+
+
+    console.log("NEW_IMG: ", newImg);
+    console.log("THIS_IMG: ", thisImg);
 
     const addNewAd = () => {
       
       const images = [];
   
       if (thisImg) {
-        for (const i of thisImg) {
-          const newImg = {id: i.id};
+        for (const img of thisImg) {
+          const newImg = img.id;
           images.push(newImg);
         }
       }
+
+      console.log("I_M_A_G_E_S: ", images);
   
       const Ad = {
-        ...(id ? {id: id} : {}),
+        id: id,
+        // ...(id ? {id: id} : {}),
         ///////// ...(images.length ? {images: images[0].url} : {}), /// для аватара
         // ...(images.length ? {images: images} : {}), ///  для объяв
+        images: images, ///  для объяв
         title: thisTitle,
         description: thisDescription,
         tags: thisTags,
         address: thisAddress,
         price: +thisPrice,
         }
+
+        console.log("++A_D++: ", Ad);
   
       onNewAd(Ad);
     }
@@ -139,6 +150,6 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
 
 const CDashboard = connect(state => ({ newImg: state.info?.allUploadedImageries?.payload, 
                                          adForEdit: state.info?.adById?.payload}),
-                                        { onUpload: actionImgeriesUpload, onNewAd: actionAddAd})(Dashboard);
+                                        { onUpload: actionImgeriesUpload, onNewAd: actionUpsertAd})(Dashboard);
 
 export default CDashboard;
