@@ -7,16 +7,12 @@ import history from "../utils/history";
 const actionChangeProfile = (myProfile) =>
   async (dispatch) => {
 
-
-///////////// ДОБАВИТЬ АВАТАРКУ
-///////////
     const gqlQuery = `mutation ChangeProfile($myProfile: UserInput) {
       userUpdate(myProfile: $myProfile) {
-        id, createdAt, login, nick, phones, address, avatar{
-          id
-        }
+        id, createdAt, login, nick, phones, address, avatar {id url originalname}
         }
       }`
+
     const gqlPromise = gql(gqlQuery, { myProfile });
     const action = actionPromise('newProfile', gqlPromise);
     const resolved = await dispatch(action);

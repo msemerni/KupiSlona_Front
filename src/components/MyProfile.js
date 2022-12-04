@@ -21,15 +21,15 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
   const [myNick, setMyNick] = useState(nick || "");
   const [myPhones, setMyPhones] = useState(phones || []);
   const [myAddresses, setMyAddresses] = useState(address || []);
-  const [img, setImg] = useState([]);
-  // const [img, setImg] = useState();
+  const [img, setImg] = useState();
 
   const changeProfile = () => {
-    // console.log("IMG[0].ID: ", img[0].id);
-    // const newAva = { id: img[0].id }
-    // console.log("NEW_AVA: ", newAva);
-    // console.log("IMG: ", img);
-    // console.log("img[0].id: ", img[0].id);
+    console.log("IMG[0].ID: ", img[0].id); //168
+    console.log("IMG: ", img); // [{id url}]
+
+    const newAva = img[0].id;
+
+    console.log("NEW_AVA: ", newAva); //
 
     const newProfile = {
       id: id,
@@ -37,8 +37,11 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
       nick: myNick,
       phones: myPhones,
       address: myAddresses,
+      avatar: newAva
       // ...(newAva ? { avatar: newAva } : {}),
     }
+
+    console.log("==newProfile==: ", newProfile);
 
     onChangeProfile(newProfile);
   }

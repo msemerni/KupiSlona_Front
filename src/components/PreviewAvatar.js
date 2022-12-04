@@ -5,7 +5,7 @@ import store from '../reducers/store';
 import { connect } from 'react-redux';
 import Loader from './Loader';
 
-const PreviewAvatar = ({ img = [store.getState().info?.userProfile?.payload?.avatar], status, className }) => {
+const PreviewAvatar = ({ img = store.getState().info?.userProfile?.payload?.avatar, status, className }) => {
 
   return (status === 'PENDING' ? <Loader /> :
     <div className={`${className}`}>

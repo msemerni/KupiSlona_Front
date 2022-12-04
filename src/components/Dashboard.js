@@ -46,7 +46,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
   
       const Ad = {
         ...(id ? {id: id} : {}),
-        // ...(images.length ? {images: images[0].url} : {}), /// для аватара
+        ///////// ...(images.length ? {images: images[0].url} : {}), /// для аватара
         // ...(images.length ? {images: images} : {}), ///  для объяв
         title: thisTitle,
         description: thisDescription,
