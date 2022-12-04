@@ -138,7 +138,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
   }
 
 const CDashboard = connect(state => ({ newImg: state.info?.allUploadedImageries?.payload, 
-                                         adForEdit: state.info?.goodById?.payload}),
+                                         adForEdit: state.info?.adById?.payload}),
                                         { onUpload: actionImgeriesUpload, onNewAd: actionAddAd})(Dashboard);
 
 export default CDashboard;

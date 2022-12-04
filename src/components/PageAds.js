@@ -21,7 +21,7 @@ const PageAds = ({ match: { params: { id } }, onIdChange, onDelete, ad }) => {
         ad ? <AdCardDetailed key={ad.id} ad={ad} /> : <Loader />
     )
 }
-const CPageAds = connect(state => ({ ad: state.info?.goodById?.payload }), 
+const CPageAds = connect(state => ({ ad: state.info?.adById?.payload }), 
                                 { onIdChange: actionAdById, 
                                     // onDelete: actionDelAd 
                                 })(PageAds);

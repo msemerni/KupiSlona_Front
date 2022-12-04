@@ -21,12 +21,15 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
   const [myNick, setMyNick] = useState(nick || "");
   const [myPhones, setMyPhones] = useState(phones || []);
   const [myAddresses, setMyAddresses] = useState(address || []);
-  const [img, setImg] = useState();
-  console.log("img: ", img);
+  const [img, setImg] = useState([]);
+  // const [img, setImg] = useState();
 
   const changeProfile = () => {
+    // console.log("IMG[0].ID: ", img[0].id);
     // const newAva = { id: img[0].id }
-    // console.log("newAva: ", newAva);
+    // console.log("NEW_AVA: ", newAva);
+    // console.log("IMG: ", img);
+    // console.log("img[0].id: ", img[0].id);
 
     const newProfile = {
       id: id,

@@ -1,11 +1,13 @@
 import gql from "../utils/gql.js";
 import { actionPromise } from './actionPromise';
 
+///////////// ДОБАВИТЬ АВАТАРКУ
+///////////
 const actionUser = (id) => {
   const gqlQuery = `query thisUser ($ID: ID) {
     getUser (id: $ID) {
       id login nick createdAt phones address avatar{
-        id path originalname
+        id
       }
     }
   }`;

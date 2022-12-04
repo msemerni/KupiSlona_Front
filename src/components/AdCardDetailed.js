@@ -18,14 +18,14 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address } }) 
         <address>{address}</address>
         <p>{"тут телефоны"}</p>
 
-        {store.getState().info.userProfile?.payload?.id !== store.getState().info.goodById?.payload?.user?.id &&
+        {store.getState().info.userProfile?.payload?.id !== store.getState().info.adById?.payload?.user?.id &&
           <div className="text-center">
             <button className='btn btn-outline-info' onClick={() => alert("Write your message from Telegram/Viber")}>Write message</button>
           </div>
         }
       </div>
 
-      {store.getState().info.userProfile?.payload?.id === store.getState().info.goodById?.payload?.user?.id &&
+      {store.getState().info.userProfile?.payload?.id === store.getState().info.adById?.payload?.user?.id &&
         <div className="d-flex justify-content-end">
           <Link to={`/dashboard`}>
             <FontAwesomeIcon icon={faFilePen} style={{ padding: 0.5 + "em", fontSize: 2 + "em" }} />
@@ -33,7 +33,7 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address } }) 
           <FontAwesomeIcon icon={faTrashCan}
             style={{ padding: 0.5 + "em", fontSize: 2 + "em", color: "#dc3545", cursor: "pointer" }}
             onClick={() => {
-              let adIdToDel = store.getState().info.goodById?.payload?.id;
+              let adIdToDel = store.getState().info.adById?.payload?.id;
               console.log("ADD TO DELETE (ID): ", adIdToDel);
               actionDelAd(adIdToDel);
               history.push("/ads");

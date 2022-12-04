@@ -8,11 +8,13 @@ const actionChangeProfile = (myProfile) =>
   async (dispatch) => {
 
 
-    /////// ДОБАВИТЬ АВАТАРКУ
-    
+///////////// ДОБАВИТЬ АВАТАРКУ
+///////////
     const gqlQuery = `mutation ChangeProfile($myProfile: UserInput) {
       userUpdate(myProfile: $myProfile) {
-        id, createdAt, login, nick, phones, address
+        id, createdAt, login, nick, phones, address, avatar{
+          id
+        }
         }
       }`
     const gqlPromise = gql(gqlQuery, { myProfile });

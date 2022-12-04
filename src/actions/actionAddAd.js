@@ -6,7 +6,7 @@ const actionAddAd = (Ad) =>
     const gqlQuery = `mutation upsertAd($Ad: AdInput) {
       upsertAd(ad:$Ad) 
       {
-        user {login} id title
+        user {id login} id title tags price images {id url}
       }
     }`;
     const gqlPromise = gql(gqlQuery, { Ad });
