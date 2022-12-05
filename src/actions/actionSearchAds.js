@@ -4,7 +4,9 @@ import { actionPromise } from "./actionPromise";
 const actionSearchAds = (queryString) => {
   const gqlQuery = gql(`query SearchAds ($queryString: String) {
     AdSearch (queryString: $queryString) {
-      id title price description createdAt tags address user {id login}
+      id title price description createdAt tags address 
+      images { id url originalname }
+      user {id login}
     }
   }`,
   { queryString }
