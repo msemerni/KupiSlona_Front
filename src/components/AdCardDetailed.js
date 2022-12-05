@@ -24,8 +24,9 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address, user
           </div>
         }
       </div>
-
-      {store.getState().info.userProfile?.payload?.id === store.getState().info.adById?.payload?.user?.id &&
+        {/* ///// РАСКОММЕНТИТЬ ПОТОМ */}
+      {/* {store.getState().info.userProfile?.payload?.id === store.getState().info.adById?.payload?.user?.id && */}
+      {store.getState().info.userProfile?.payload?.id &&
         <div className="d-flex justify-content-end">
           <Link to={`/dashboard`}>
             <FontAwesomeIcon icon={faFilePen} style={{ padding: 0.5 + "em", fontSize: 2 + "em" }} />

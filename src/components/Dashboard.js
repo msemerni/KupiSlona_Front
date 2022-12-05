@@ -33,11 +33,6 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
     const [thisTags, setTags] = useState(tags || "");
     // const [thisImg, setImg] = useState([]);
     const [thisImg, setImg] = useState([]);
-
-
-    console.log("NEW_IMG: ", newImg);
-    console.log("THIS_IMG: ", thisImg);
-
     const addNewAd = () => {
       
       const images = [];
@@ -49,8 +44,6 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
         }
       }
 
-      console.log("I_M_A_G_E_S: ", images);
-  
       const Ad = {
         id: id,
         // ...(id ? {id: id} : {}),
@@ -63,14 +56,10 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
         address: thisAddress,
         price: +thisPrice,
         }
-
-        console.log("++A_D++: ", Ad);
   
       onNewAd(Ad);
     }
     
-  
-  
     useEffect (() => {
       if(newImg) {
         setImg(newImg);

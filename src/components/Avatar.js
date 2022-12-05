@@ -9,7 +9,7 @@ const Avatar = ({ avatar, status, className }) => {
   if (status === 'FULFILLED') {
     return (status === 'PENDING' ? <Loader /> :
       <div style={{ maxWidth: 40 + "px" }}>
-        {avatar && avatar[0].url ?
+        {avatar && avatar[0]?.url ?
           <img src={`${BACKEND_URL}${avatar[0].url}`} className={`${className}`} alt={"avatar"} /> :
           <img src={NO_IMAGE_AVA} className={`${className}`} alt={"avatar"} />
         }
