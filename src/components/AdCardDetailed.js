@@ -7,7 +7,7 @@ import actionDelAd from '../actions/actionDelAd';
 import history from '../utils/history.js';
 
 
-const AdCardDetailed = ({ ad: { title, images, price, description, address } }) => {
+const AdCardDetailed = ({ ad: { title, images, price, description, address, user: { phones } } }) => {
   return (
     <div className='card' style={{ width: 100 + "%" }}>
       {images && <SliderImages imgArray={images} />}
@@ -16,7 +16,7 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address } }) 
         <p className="card-text">Price: $<strong>{price}</strong></p>
         <p>{description}</p>
         <address>{address}</address>
-        <p>{"тут телефоны"}</p>
+        <p>{phones}</p>
 
         {store.getState().info.userProfile?.payload?.id !== store.getState().info.adById?.payload?.user?.id &&
           <div className="text-center">
