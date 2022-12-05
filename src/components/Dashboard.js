@@ -30,7 +30,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
     const [thisDescription, setDescription] = useState(description || "");
     const [thisPrice, setPrice] = useState(price || "");
     const [thisAddress, setAddress] = useState(address || "");
-    const [thisTags, setTags] = useState(tags || []);
+    const [thisTags, setTags] = useState(tags || "");
     // const [thisImg, setImg] = useState([]);
     const [thisImg, setImg] = useState([]);
 
