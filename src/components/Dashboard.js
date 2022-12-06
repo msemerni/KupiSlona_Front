@@ -6,6 +6,8 @@ import {BACKEND_URL, tagList} from '../constants/constants.js';
 import actionImgeriesUpload from '../actions/actionImgeriesUpload';
 import actionUpsertAd from '../actions/actionUpsertAd.js';
 import history from '../utils/history.js';
+import store from "../reducers/store";
+
 
 const BtnMyAds = () => {
     return (
@@ -33,36 +35,76 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
     const [thisTags, setTags] = useState(tags || "");
     // const [thisImg, setImg] = useState([]);
     const [thisImg, setImg] = useState([]);
+    const [allImg, setAllImg] = useState(images || []);
+
+    let allImages = images || [];
+
+    // console.log("***adID***: ", id);
+    console.log("thisImg", thisImg);
+    // console.log("images_1: ", images);
+
     const addNewAd = () => {
       
       const images = [];
   
       if (thisImg) {
-        for (const img of thisImg) {
+        for (const img of allImg) {
+          // const newImg = img.id;
           const newImg = img.id;
+
           images.push(newImg);
         }
+      // console.log("images_2: ", images);
+
       }
 
       const Ad = {
-        id: id,
-        // ...(id ? {id: id} : {}),
+        // id: id,
+        ...(id ? {id: id} : {}),
         ///////// ...(images.length ? {images: images[0].url} : {}), /// для аватара
-        // ...(images.length ? {images: images} : {}), ///  для объяв
-        images: images, ///  для объяв
+        ...(images.length ? { images: images } : {}),
+
+        // ...(images.length ? images: []), ///  для объяв
+
+        // images: images, ///  для объяв
         title: thisTitle,
         description: thisDescription,
         tags: thisTags,
         address: thisAddress,
         price: +thisPrice,
         }
-  
+
+      // console.log("---Ad---: ", Ad);
       onNewAd(Ad);
+      // // store.getState().info.adById = {};
+      // // store.getState().info.allUploadedImageries = {};
+
     }
     
+
+
+
+
+
+
     useEffect (() => {
       if(newImg) {
         setImg(newImg);
+
+
+        console.log("newImg+++: ", newImg);
+        console.log("allImages+++: ", allImages);
+
+        for (const img of newImg) {
+          const {id, url, originalname} = img;
+          allImages.push({id, url, originalname});
+        }
+
+        console.log("allImagesAFTER+++: ", allImages);
+
+        setAllImg(allImages);
+        
+        store.getState().info.allUploadedImageries = {};
       }
     },[newImg])
   
@@ -84,11 +126,13 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
   
           <div className="mb-1">
             <label className="form-label w-75">Category(Tags):
-              <select className="form-select" defaultValue={"0"} required onChange={e => { setTags(e.target.value) }}>
+              <select className="form-select" defaultValue={thisTags || "0"} required onChange={e => { setTags(e.target.value) }}>
                 <option disabled value="0">Choose category...</option>
-                {tagList.map((item) => {
+                {
+                tagList.map((item) => {
                   return (<option key={item}>{item}</option>)
-                })}
+                })
+                }
               </select>
             </label>
           </div>
@@ -112,9 +156,9 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
                   <input {...getInputProps()} />
                   <p>Drag 'n' drop images here, or click to select from disk</p>
                 </div>
-                <div className="d-flex flex-row justify-content-center p-1">
+                <div className="d-flex flex-wrap flex-row justify-content-center p-1">
                     {
-                      thisImg.map(img => { return <img style={{ display: "flex", width: 50 + "px", margin: 0.5+"em"}} key={img.id} src={`${BACKEND_URL}${img.url}`} /> })
+                      allImg.map(img => { return <img style={{ display: "flex", width: 50 + "px", margin: 0.5+"em"}} key={img.id} src={`${BACKEND_URL}${img.url}`} /> })
                     }
                 </div>
               </section>

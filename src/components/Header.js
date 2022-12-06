@@ -5,6 +5,7 @@ import actionAuthLogout from '../actions/actionAuthLogout';
 import Logo from './Logo';
 import CSearchAdPanel from './SearchAdPanel';
 import { useEffect, useState } from 'react';
+import store from "../reducers/store";
 
 const BtnLogIn = ({ children }) => {
   return (
@@ -22,7 +23,20 @@ const BtnSignUp = ({ children }) => {
   )
 }
 
-const CUserInfo = connect(state => ({ children: state.info?.userProfile?.payload?.nick || state.info?.userProfile?.payload?.login, className: "mx-2", to: "/dashboard" }))(Link)
+const UserInfo = ({ children }) => {
+  return (
+    <Link className="text-decoration-none" to="/dashboard">
+      <button className="btn btn-outline-primary m-1 btn-sm"  
+      onClick={()=>{
+        store.getState().info.adById = {};
+        store.getState().info.allUploadedImageries = {}}}>{children}</button>
+    </Link>
+  )
+}
+
+const CUserInfo = connect(state => ({ children: state.info?.userProfile?.payload?.nick ||
+                                                state.info?.userProfile?.payload?.login, className: "mx-2", 
+                                                disabled: !state.auth.token }))(UserInfo)
 const CBtnLogIn = connect(state => ({ children: 'LogIn', disabled: !!state.auth.token }))(BtnLogIn)
 const CBtnSignUp = connect(state => ({ children: 'SignUp', disabled: state.auth.token }))(BtnSignUp)
 const CBtnLogOut = connect(state => ({ children: 'LogOut', disabled: !state.auth.token, className: "btn btn-outline-primary m-1 btn-sm" }), { onClick: actionAuthLogout })("button")
@@ -48,8 +62,7 @@ const Header = ({onLoginned}) => {
         </div>
         <div className="d-flex justify-content-end align-items-center">
           <CAvatar className="col-md-1 p-1" />
-          <CUserInfo />
-          {!localStorage.authToken ? (<><CBtnLogIn /> <CBtnSignUp /></>) : <CBtnLogOut />}
+          {!localStorage.authToken ? (<><CBtnLogIn /> <CBtnSignUp /></>) : <><CUserInfo/><CBtnLogOut/></>}
         </div>
       </div>
       <div>

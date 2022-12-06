@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import history from '../utils/history';
 import { connect } from 'react-redux';
 import actionSearchAds from '../actions/actionSearchAds';
+import store from "../reducers/store";
+
 
 function convertSearchStr(searchStr) {
   return searchStr.replaceAll(" ", "|");
@@ -10,6 +12,7 @@ function convertSearchStr(searchStr) {
 const SearchAdPanel = ({ onSearchAd }) => {
   useEffect(() => {
     onSearchAd()
+    
   }, [])
   const [searchStrForQuery, setSearchStr] = useState();
   return (
