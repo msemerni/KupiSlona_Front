@@ -158,7 +158,9 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
                 </div>
                 <div className="d-flex flex-wrap flex-row justify-content-center p-1">
                     {
-                      allImg.map(img => { return <img style={{ display: "flex", width: 50 + "px", margin: 0.5+"em"}} key={img.id} src={`${BACKEND_URL}${img.url}`} /> })
+                      allImg.map(img => { 
+                        return <img style={{ display: "flex", width: 50 + "px", margin: 0.5+"em"}} key={img.id} src={`${BACKEND_URL}${img.url}`} /> 
+                      })
                     }
                 </div>
               </section>
