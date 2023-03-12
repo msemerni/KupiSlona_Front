@@ -1,6 +1,5 @@
 //// login: msemerni
 //// password: 123
-
 //// login: 1122@mail.ru
 //// password: 1122
 import './App.scss';
