@@ -20,7 +20,7 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address, user
 
         {store.getState().info.userProfile?.payload?.id !== store.getState().info.adById?.payload?.user?.id &&
           <div className="text-center">
-            <button className='btn btn-outline-info' onClick={() => alert("Write your message from Telegram/Viber")}>Write message</button>
+            <button className='btn btn-outline-info' onClick={() => alert("Write your message via Telegram/Viber")}>Write message</button>
           </div>
         }
       </div>
