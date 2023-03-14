@@ -1,4 +1,5 @@
 const BACKEND_URL = `http://localhost:4000/`;
+// const BACKEND_URL = `https://18.198.87.212:443/`;
 const BACKEND_URL_QUERY = `${BACKEND_URL}graphql`;
 const BACKEND_URL_UPLOAD = `${BACKEND_URL}upload`;
 // const EMAIL_REGEXP = new RegExp(/^\S+@\S+\.\S+/);
