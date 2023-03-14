@@ -18,12 +18,12 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
 
   const [myLogin, setMyLogin] = useState(login);
   const [myNick, setMyNick] = useState(nick || "");
-  const [myPhones, setMyPhones] = useState(phones || []);
-  const [myAddresses, setMyAddresses] = useState(address || []);
+  const [myPhones, setMyPhones] = useState(phones || "");
+  const [myAddresses, setMyAddresses] = useState(address || "");
   const [img, setImg] = useState();
 
   const changeProfile = () => {
-    const newAva = img[0].id;
+    const newAva = img ? img[0].id : [];
 
     const newProfile = {
       id: id,
@@ -88,8 +88,8 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
 
       <button type="submit" className="btn btn-outline-success"
         onClick={(e) => {
-                  changeProfile();
                   e.preventDefault();
+                  changeProfile();
         }}
         disabled={(!login) || !login?.match(EMAIL_REGEXP)}>Change profile
       </button>
