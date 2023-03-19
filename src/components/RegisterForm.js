@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 const RegisterForm = ({ onLogin }) => {
-  const [login, setLogin] = useState("email");
+  const [login, setLogin] = useState("login");
   const [password, setPassword] = useState("password");
   const [confirmPassword, setConfirmPassword] = useState("confirm password");
   
@@ -12,9 +12,9 @@ const RegisterForm = ({ onLogin }) => {
     <form className="mx-auto px-5 py-2 w-100 h-100 text-center bg-light">
       
       <div className="mb-2 row justify-content-center">
-        <label htmlFor="inputEmail" className="col-sm-3 col-form-label text-end">Email:</label>
+        <label htmlFor="inputEmail" className="col-sm-3 col-form-label text-end">Login:</label>
         <div className="col-sm-6">
-          <input type="email" id="inputEmail" className="form-control" placeholder='email' required onChange={(e) => setLogin(e.target.value)} />
+          <input type="text" id="inputEmail" className="form-control" placeholder='login' required onChange={(e) => setLogin(e.target.value)} />
         </div>
       </div>
 

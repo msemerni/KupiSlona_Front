@@ -55,7 +55,7 @@ const MyProfile = ({ myProfile: { id, createdAt, login, nick, phones, address } 
       </Dropzone>
 
       <div className="mb-2 row">
-        <label htmlFor="inputEmail" className="col-sm-2 col-form-label text-end">Email:</label>
+        <label htmlFor="inputEmail" className="col-sm-2 col-form-label text-end">Login:</label>
         <div className="col-sm-8">
           <input type="text" id="inputEmail" className="form-control" placeholder='*required' value={myLogin} required /// type=email
             onChange={(e) => setMyLogin(e.target.value)} />

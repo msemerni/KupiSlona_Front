@@ -10,7 +10,7 @@ const LoginForm = ({ onLogin }) => {
   return (
     <form className='m-auto p-5 w-100 h-100 text-center bg-light'>
       <div className="m-1">
-        <label className="form-label">Email:
+        <label className="form-label">Login:
           {/* <input type="email" */}
           <input type="text"
             required
