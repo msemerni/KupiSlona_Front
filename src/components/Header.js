@@ -54,6 +54,7 @@ const Header = ({onLoginned}) => {
       <div className="d-flex flex-row justify-content-between mb-1" >
         <div className="d-flex align-items-center">
           <Link to={`/ads`} className="text-decoration-none text-black d-flex align-items-center">
+          {/* <Link to={`/`} className="text-decoration-none text-black d-flex align-items-center"> */}
             <Logo />
             <h1 className="fw-bolder" style={{ color: "#0d6efd" }} >
               KupiSlona
@@ -62,7 +63,11 @@ const Header = ({onLoginned}) => {
         </div>
         <div className="d-flex justify-content-end align-items-center">
           <CAvatar className="col-md-1 p-1" />
-          {!localStorage.authToken ? (<><CBtnLogIn /> <CBtnSignUp /></>) : <><CUserInfo/><CBtnLogOut/></>}
+          {!localStorage.authToken ? (<><CBtnLogIn /> <CBtnSignUp /></>) : 
+          <>
+            {store.getState().info?.userProfile?.status === "FULFILLED" && <CUserInfo/>}
+            <CBtnLogOut/>
+          </>}
         </div>
       </div>
       <div>

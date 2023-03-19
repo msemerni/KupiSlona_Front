@@ -19,6 +19,8 @@ const Content = () =>
       <Route path="/dashboard" component={CDashboard} />
       <Route path="/ads/:id" component={CPageAds} />
       <Route path="/ads" component={CAllAds} />
+      {/* <Route path="/" component={CAllAds} />
+      <Route path="/:id" component={CPageAds} /> */}
       <Route path="/search" component={CSearchAds} />
       <Route path="/myads" component={CMyAds} />
       <Route path="/profile" component={CMyProfile} />

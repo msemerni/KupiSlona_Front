@@ -38,5 +38,6 @@ const LoginForm = ({ onLogin }) => {
 }
 
 const CLoginForm = connect(null, { onLogin: actionFullLogin, to: "/ads" })(LoginForm)
+// const CLoginForm = connect(null, { onLogin: actionFullLogin, to: "/" })(LoginForm)
 
 export default CLoginForm;

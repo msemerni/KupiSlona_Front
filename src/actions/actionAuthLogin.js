@@ -11,7 +11,8 @@ const actionAuthLogin = (token) =>
         if (newState !== oldState) {
             localStorage.authToken = token
             dispatch(actionUser(store.getState().auth.payload.id));
-            history.push("./ads")
+            history.push("/ads")
+            // history.push("/")
         }
     }
 

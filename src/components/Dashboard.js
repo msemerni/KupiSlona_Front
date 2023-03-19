@@ -177,6 +177,7 @@ const Dashboard  = ({ newImg, onUpload, onNewAd, adForEdit: {id, title, descript
                            addNewAd();
                            e.preventDefault();
                            history.push("/ads");
+                          //  history.push("/");
                           }}>Apply</button>
         </form>
       </>

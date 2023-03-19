@@ -38,6 +38,7 @@ const AdCardDetailed = ({ ad: { title, images, price, description, address, user
               console.log("ADD TO DELETE (ID): ", adIdToDel);
               actionDelAd(adIdToDel);
               history.push("/ads");
+              // history.push("/");
               // alert("ad deleted")
               }
             } />

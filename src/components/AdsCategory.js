@@ -5,6 +5,7 @@ import NO_IMAGE from '../image/no_img_available.jpg';
 const AdsCategory = ({ ad: { id, title, price, createdAt, images } }) =>
   <div className="card mb-3" style={{ maxWidth: 75 + "%", margin: "0 auto", background: "#c5c3ff" }}>
     <Link to={`/ads/${id}`} className="text-decoration-none text-black">
+    {/* <Link to={`/${id}`} className="text-decoration-none text-black"> */}
       <div className="row g-0">
         <div className="col-md-4">
           {images && images[0] && images[0].url ? <img src={`${BACKEND_URL}${images && images[0] && images[0].url}`}
