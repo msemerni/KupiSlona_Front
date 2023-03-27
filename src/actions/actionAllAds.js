@@ -1,6 +1,6 @@
 import { actionFulfilled } from "./actionPromise";
 import gql from "../utils/gql";
-
+ 
 const actionAllAds = () =>
   async (dispatch, getState) => {
 
